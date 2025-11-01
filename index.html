@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Metadatos Esenciales y NAP (Name, Address, Phone) -->
+    <title>Reformas León | Expertos en Reformas Integrales y Cocinas Profesionales</title>
+    <meta name="description" content="Reformas León (694 29 20 25) - Su proyecto de reforma integral o cocina profesional en León, ejecutado con la precisión de la ingeniería. Transparencia, calidad y garantía en C. García I, 4.">
+    
+    <!-- Importar Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Importar Fuente (Inter - Estilo limpio, similar a GitHub) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand': {
+                            'orange': '#e67e22', // Color de acento principal
+                            'dark': '#2c3e50',   // Color de texto y fondos oscuros
+                            'light': '#ecf0f1',  // Fondo claro alternativo
+                            'grey': '#34495e',  // Gris azulado
+                        }
+                    },
+                    boxShadow: {
+                        'header': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05)',
+                    },
+                    // Simular la tipografía de GitHub
+                    typography: (theme) => ({
+                        DEFAULT: {
+                            css: {
+                                color: theme('colors.brand.dark'),
+                                a: {
+                                    color: theme('colors.brand.orange'),
+                                    '&:hover': {
+                                        color: theme('colors.brand.orange / 0.8'),
+                                    },
+                                },
+                                h1: {
+                                    color: theme('colors.brand.dark'),
+                                    fontWeight: '800',
+                                },
+                                h2: {
+                                    color: theme('colors.brand.dark'),
+                                    fontWeight: '700',
+                                    borderBottom: `2px solid ${theme('colors.slate.200')}`,
+                                    paddingBottom: theme('spacing.2'),
+                                },
+                                h3: {
+                                    color: theme('colors.brand.dark'),
+                                    fontWeight: '700',
+                                },
+                                'details > summary': {
+                                    fontWeight: '700',
+                                    cursor: 'pointer',
+                                },
+                            },
+                        },
+                    }),
+                },
+            },
+            // El plugin 'require('@tailwindcss/typography')' usa Node.js y no puede
+            // ejecutarse directamente en el navegador, causando el error "require is not defined".
+            // Lo comentamos para solucionar el error. El estilo base de Tailwind seguirá funcionando.
+            // plugins: [
+            //     require('@tailwindcss/typography'),
+            // ],
+        }
+    </script>
+    
+    <!-- Iconos Ligeros (HeroIcons) para la UI -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        /* Estilo para los 'summary' de FAQ (similar a GitHub) */
+        details > summary {
+            list-style: none;
+            padding: 1.5rem;
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] > summary {
+            background-color: #f3f4f6;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        details > div {
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-top: 0;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            background-color: #ffffff;
+        }
+        details > summary::before {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-right: 1rem;
+            color: #e67e22;
+        }
+        details[open] > summary::before {
+            content: '−';
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+
+    <!-- ======== HEADER (Sticky Navbar) ======== -->
+    <header class="sticky top-0 z-50 w-full bg-white shadow-header">
+        <div class="container mx-auto flex max-w-7xl items-center justify-between p-4">
+            <a href="https://reformasleon.org/" class="flex items-center space-x-2">
+                <!-- Icono SVG simple como logo -->
+                <svg class="h-8 w-8 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-1.5m-15-15H21" />
+                </svg>
+                <h1 class="text-xl font-extrabold text-brand-dark md:text-2xl">
+                    Reformas León
+                </h1>
+            </a>
+            <div class="flex items-center space-x-4">
+                <a href="#contacto" class="hidden rounded-md bg-brand-orange px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-brand-orange/90 md:block">
+                    Solicitar Presupuesto
+                </a>
+                <a href="tel:694292025" class="flex items-center space-x-2 text-sm font-bold text-brand-grey md:text-base">
+                    <ion-icon name="call-outline" class="text-xl text-brand-orange"></ion-icon>
+                    <span>694 29 20 25</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======== MAIN CONTENT ======== -->
+    <main class="container mx-auto max-w-7xl px-4">
+
+        <!-- ======== HERO SECTION ======== -->
+        <section class="py-24 text-center md:py-32">
+            <h1 class="text-4xl font-extrabold tracking-tight text-brand-dark sm:text-5xl md:text-7xl">
+                La Precisión del Ingeniero,
+                <br>
+                <span class="text-brand-orange">La Calidez del Hogar.</span>
+            </h1>
+            <p class="mx-auto mt-8 max-w-3xl text-lg text-slate-600 md:text-xl">
+                Bienvenido a Reformas León. No somos una empresa de reformas al uso. Somos un equipo técnico que aplica la filosofía de la **ingeniería de precisión** y la **gestión de proyectos** a la transformación de espacios.
+                <br><br>
+                Cada reforma es un proyecto. Y cada proyecto merece una ejecución impecable, transparente y con garantía.
+            </p>
+            <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <a href="#integrales" class="w-full rounded-md bg-brand-orange px-8 py-3 text-lg font-medium text-white shadow-lg transition-transform hover:scale-105 sm:w-auto">
+                    Ver Reformas Integrales
+                </a>
+                <a href="#cocinas-pro" class="w-full rounded-md bg-brand-dark px-8 py-3 text-lg font-medium text-white shadow-lg transition-transform hover:scale-105 sm:w-auto">
+                    Nuestra Especialidad: Cocinas
+                </a>
+            </div>
+        </section>
+
+        <!-- ======== SECCIÓN DE SERVICIOS (Grid) ======== -->
+        <section id="servicios" class="py-24">
+            <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+
+                <!-- Card 1: Reformas Integrales -->
+                <div class="transform rounded-xl bg-white p-8 shadow-card transition-shadow hover:shadow-2xl">
+                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+                        <ion-icon name="home-outline" class="text-4xl"></ion-icon>
+                    </div>
+                    <h2 class="mb-4 text-3xl font-bold text-brand-dark">Reformas Integrales</h2>
+                    <p class="mb-6 text-slate-600">
+                        La transformación completa de su vivienda gestionada como un proyecto "llave en mano". Asumimos la **interlocución única**, coordinando todos los gremios (desde la demolición hasta la limpieza final) para garantizar plazos, costes y una calidad excepcional.
+                    </p>
+                    <a href="#integrales-deep-dive" class="font-bold text-brand-orange transition-colors hover:text-brand-orange/80">Leer más sobre el proceso →</a>
+                </div>
+
+                <!-- Card 2: Cocinas Profesionales -->
+                <div class="transform rounded-xl bg-white p-8 shadow-card transition-shadow hover:shadow-2xl">
+                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+                        <ion-icon name="restaurant-outline" class="text-4xl"></ion-icon>
+                    </div>
+                    <h2 class="mb-4 text-3xl font-bold text-brand-dark">Cocinas Profesionales</h2>
+                    <p class="mb-6 text-slate-600">
+                        Nuestra gran especialidad. Diseñamos e instalamos cocinas industriales para hostelería (restaurantes, bares, hoteles) que cumplen la **normativa APPCC**. Maximizamos la ergonomía, los flujos de trabajo y la durabilidad, usando solo los mejores materiales como el acero AISI 304.
+                    </p>
+                    <a href="#cocinas-pro" class="font-bold text-brand-orange transition-colors hover:text-brand-orange/80">Ver nuestra especialidad →</a>
+                </div>
+
+                <!-- Card 3: Reformas de Baños y Locales -->
+                <div class="transform rounded-xl bg-white p-8 shadow-card transition-shadow hover:shadow-2xl">
+                    <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-orange/10 text-brand-orange">
+                        <ion-icon name="storefront-outline" class="text-4xl"></ion-icon>
+                    </div>
+                    <h2 class="mb-4 text-3xl font-bold text-brand-dark">Baños y Locales</h2>
+                    <p class="mb-6 text-slate-600">
+                        Aplicamos el mismo rigor a proyectos específicos. Convertimos su baño en un espacio de relax y funcionalidad, o adaptamos su local comercial para maximizar su potencial de negocio, cumpliendo siempre con las normativas de accesibilidad y uso.
+                    </p>
+                    <a href="#contacto" class="font-bold text-brand-orange transition-colors hover:text-brand-orange/80">Consultar un proyecto →</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ======== IN-DEPTH DIVE 1: EL PROYECTO DE REFORMA INTEGRAL (Estilo Documentación) ======== -->
+        <section id="integrales-deep-dive" class="overflow-hidden rounded-xl bg-white py-24 shadow-card sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="prose prose-lg max-w-none">
+                    
+                    <h2 class="text-4xl">El Manifiesto de la Reforma Integral: Su Proyecto "Llave en Mano"</h2>
+                    
+                    <p class="text-xl">En Reformas León, una "reforma integral" no es una obra; es el desarrollo de un proyecto complejo que gestionamos de principio a fin. Lo tratamos con la seriedad de un proyecto de ingeniería. Nuestro proceso está diseñado para eliminar la incertidumbre, el estrés y los sobrecostes, basándose en la **transparencia total** y la **planificación meticulosa**.</p>
+                    
+                    <p>Así es como transformamos un piso anticuado en el hogar de sus sueños, fase por fase.</p>
+
+                    <h3>Fase 1: La Consultoría y el Diseño (El "Scope" del Proyecto)</h3>
+                    <p>Todo gran proyecto comienza con una definición clara de objetivos. Esta fase es la más importante y es donde otras empresas fallan por ir demasiado rápido.</p>
+                    <ul>
+                        <li><strong>Escucha Activa:</strong> No solo medimos su piso. Nos sentamos con usted. ¿Cómo vive? ¿Teletrabaja? ¿Necesita almacenamiento? ¿Qué odia de su casa actual y qué sueña con tener?</li>
+                        <li><strong>Análisis de Viabilidad:</strong> Nuestro equipo técnico analiza la estructura del edificio (muros de carga, bajantes, instalaciones comunes) para saber qué es posible, qué es recomendable y qué es una mala idea.</li>
+                        <li><strong>El Anteproyecto:</strong> Le presentamos una (o varias) propuestas de distribución con planos. Aquí es donde "tiramos" tabiques en el papel, optimizamos cada metro cuadrado y definimos el nuevo *layout* funcional de la vivienda.</li>
+                        <li><strong>Presupuesto "Open Source":</strong> Nuestro presupuesto no es una cifra. Es un documento detallado de más de 20 páginas. Desglosamos CADA partida: demolición, albañilería, fontanería (especificando materiales), electricidad (especificando mecanismos), carpintería (especificando calidades)... Sabrá exactamente dónde va cada euro. <strong>Este presupuesto es cerrado y se firma por contrato.</strong></li>
+                    </ul>
+
+                    <h3>Fase 2: La Ejecución (El "Commit" Diario)</h3>
+                    <p>Una vez firmado el contrato y obtenidas las licencias (nosotros nos encargamos de TODO el papeleo con el Ayuntamiento de León), comienza la transformación. Aquí es donde nuestra gestión de proyecto brilla.</p>
+                    <ul>
+                        <li><strong>Jefe de Obra: Su Interlocutor Único.</strong> Usted no tendrá que hablar con el fontanero, el electricista o el pintor. Tendrá un único número de teléfono. Nuestro Jefe de Obra es su gestor de proyecto personal, coordina a todos los gremios y le informa semanalmente del avance.</li>
+                        <li><strong>Demolición y Desescombro:</strong> La fase más "sucia", ejecutada con la máxima limpieza. Protegemos las zonas comunes de su edificio y gestionamos todos los residuos según la normativa.</li>
+                        <li><strong>La Infraestructura ("El Backend"):</strong> Esta es la parte invisible y la más crucial. Renovamos el 100% de las instalaciones obsoletas.
+                            <ul>
+                                <li><strong>Fontanería:</strong> Tuberías nuevas de multicapa o cobre, con llaves de corte por estancia.</li>
+                                <li><strong>Electricidad:</strong> Cableado nuevo, ignífugo, con un cuadro eléctrico moderno, división de líneas (iluminación, fuerza, horno, etc.) y la emisión del Boletín Eléctrico (CIE) correspondiente.</li>
+                                <li><strong>Aislamiento:</strong> La clave del confort en León. Mejoramos la eficiencia energética de su hogar tratando puentes térmicos, instalando trasdosados con aislamiento térmico y acústico, y renovando ventanas por carpintería de PVC o RPT de alta gama.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Los Acabados ("El Frontend"):</strong> Aquí es donde su visión toma forma. Nuestro equipo instala con precisión milimétrica los nuevos solados, alicatados, puertas, armarios empotrados, y aplica la pintura. Cada detalle se supervisa.</li>
+                    </ul>
+
+                    <h3>Fase 3: La Entrega y Garantía (El "Deploy" y el Soporte LTS)</h3>
+                    <p>No terminamos la obra y desaparecemos.</p>
+                    <ul>
+                        <li><strong>Limpieza Profesional:</strong> Entregamos su casa no "lista para limpiar", sino "lista para vivir". Una empresa de limpieza profesional dejará cada rincón impecable.</li>
+                        <li><strong>Revisión de Entrega:</strong> Recorremos con usted cada estancia, probamos cada grifo, cada interruptor. No firmamos la entrega hasta que usted no esté 100% satisfecho.</li>
+                        <li><strong>Garantía por Escrito:</strong> Todos nuestros trabajos están cubiertos por una garantía completa, tal y como marca la ley. Dormirá tranquilo sabiendo que su inversión está protegida.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======== IN-DEPTH DIVE 2: ESPECIALIDAD EN COCINAS PROFESIONALES ======== -->
+        <section id="cocinas-pro" class="bg-brand-dark py-24 text-brand-light sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="prose prose-lg prose-invert max-w-none">
+
+                    <h2 class="text-4xl text-brand-orange">Nuestra Ventaja Competitiva: El Rigor de la Cocina Profesional</h2>
+
+                    <p class="text-xl">Aquí es donde Reformas León se desmarca de la competencia. Nuestra especialización más técnica es el **diseño y ejecución de cocinas industriales y profesionales** para el exigente sector de la hostelería en León.</p>
+                    
+                    <p>Puede que piense: "¿Y esto por qué me importa si yo solo quiero reformar la cocina de mi casa?"</p>
+                    
+                    <p><strong>La respuesta es sencilla: Rigor.</strong></p>
+                    
+                    <p>Un equipo que sabe diseñar y ejecutar una cocina para un restaurante que debe soportar 1.000 servicios semanales, aplica un nivel de conocimiento técnico y de calidad de materiales que está a años luz del estándar de una reforma doméstica.</p>
+                    
+                    <h3>Lo que Exige una Cocina Profesional (y cómo lo aplicamos a su hogar)</h3>
+                    
+                    <p>Una cocina industrial no es un tema de "moda"; es un tema de **ingeniería, ergonomía y ley**.</p>
+                    
+                    <ol>
+                        <li><strong>Normativa APPCC y Sanidad:</strong> Diseñamos cocinas que aprueban inspecciones de Sanidad a la primera. Esto implica un conocimiento profundo del "Análisis de Peligros y Puntos de Control Crítico" (APPCC). Creamos flujos de trabajo lógicos (el principio de "marcha adelante") para que los alimentos limpios (emplatado) nunca se crucen con los sucios (lavado, basura).
+                            <br><em><strong>En su hogar:</strong> Aplicamos este conocimiento de "flujos" para diseñar un "triángulo de trabajo" (nevera, cocción, fregadero) ergonómico, que le haga la vida más fácil y evite desplazamientos innecesarios.</em></li>
+
+                        <li><strong>Durabilidad y Materiales Extremos:</strong> En hostelería no hay opción. Todo es **Acero Inoxidable AISI 304** (o 316 para zonas de salinidad). Es el único material que garantiza la higiene, la resistencia al calor y la durabilidad absoluta. Fabricamos a medida mesas, estanterías y muebles de acero.
+                            <br><em><strong>En su hogar:</strong> Aunque usemos melaminas o lacados, nuestro estándar de instalación es industrial. Sabemos qué herrajes duran, qué encimeras (porcelánicas, granitos) resisten de verdad y cómo sellar juntas para que duren 20 años, no 2.</em></li>
+
+                        <li><strong>Ingeniería de Extracción y Ventilación:</strong> Este es el gran fracaso de las cocinas domésticas "abiertas". En un restaurante, calculamos el caudal de extracción (m³/h) necesario en función de los fuegos, instalando campanas, conductos y motores que CUMPLEN la normativa de ruidos e incendios.
+                            <br><em><strong>En su hogar:</strong> No le dejaremos poner una cocina abierta con una campana decorativa que no aspira. Le asesoraremos sobre la potencia REAL que necesita y cómo diseñar la instalación para que pueda cocinar sin llenar la casa de humo.</em></li>
+                        
+                        <li><strong>Instalaciones de Alto Rendimiento:</strong> Las instalaciones de gas y electricidad de un restaurante son de alta potencia y deben ser 100% seguras.
+                            <br><em><strong>En su hogar:</strong> Aplicamos esta mentalidad de "seguridad industrial". Su horno, inducción y microondas tendrán líneas eléctricas dedicadas y correctamente dimensionadas desde el cuadro, eliminando el riesgo de sobrecalentamiento o de que "salten los plomos".</em></li>
+                    </ol>
+
+                    <p>En resumen, cuando contrata a Reformas León para la cocina de su casa, está contratando a un equipo que piensa como un ingeniero. El resultado es una cocina que no solo es bonita el primer día, sino que es funcional, segura y duradera para las próximas décadas.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ======== FAQ (PREGUNTAS FRECUENTES - Estilo GitHub Accordion) ======== -->
+        <section id="faq" class="py-24 sm:py-32">
+            <div class="mx-auto max-w-4xl px-6 lg:px-8">
+                <h2 class="mb-16 text-center text-4xl font-extrabold text-brand-dark">Preguntas Frecuentes (El "FAQ" del Proyecto)</h2>
+                
+                <div class="space-y-4">
+                    <!-- Pregunta 1 -->
+                    <details>
+                        <summary class="text-xl">¿Cuánto cuesta una reforma integral en León?</summary>
+                        <div>
+                            <p class="mb-4">Es la pregunta más habitual, y la única respuesta honesta es: **depende**. Desconfíe de quien le dé un precio por metro cuadrado sin ver su piso. Es como preguntar cuánto cuesta un coche sin decir la marca o el modelo.</p>
+                            <p class="mb-4">El precio final de una reforma integral en León depende de tres factores principales:</p>
+                            <ul class="mb-4 list-disc space-y-2 pl-6">
+                                <li><strong>Estado Inicial del Inmueble:</strong> No es lo mismo reformar un piso de los 90 (que puede tener instalaciones "salvables") que un piso en el casco antiguo que requiere una renovación del 100% de fontanería, electricidad y quizás refuerzos estructurales.</li>
+                                <li><strong>Superficie y Distribución:</strong> A más metros, más coste. Pero, sobre todo, si se van a demoler tabiques y redistribuir la vivienda, el coste de albañilería y gestión de residuos aumenta.</li>
+                                <li><strong>Calidad de los Materiales (Las "Calidades"):</strong> Esta es la variable que más influye. No cuesta lo mismo un suelo laminado AC4 que un parqué de roble macizo. Ni una ventana de PVC estándar que una con triple vidrio y control solar.</li>
+                            </ul>
+                            <p class="font-bold">Nuestra política: No damos precios genéricos. Ofrecemos una visita gratuita, estudiamos su proyecto y le entregamos un presupuesto cerrado, por contrato y 100% desglosado. Sabrá en qué invierte cada euro.</p>
+                        </div>
+                    </details>
+                    
+                    <!-- Pregunta 2 -->
+                    <details>
+                        <summary class="text-xl">¿Cuánto tiempo tarda una reforma integral?</summary>
+                        <div>
+                            <p class="mb-4">Otra respuesta que depende de la "complejidad del proyecto". Sin embargo, basándonos en nuestra experiencia en León, una **reforma integral real** (no un simple lavado de cara) de un piso estándar (aprox. 90-110 m²) suele durar **entre 3 y 5 meses**.</p>
+                            <p class="mb-4">¿Por qué tanto?</p>
+                            <ul class="mb-4 list-disc space-y-2 pl-6">
+                                <li><strong>Planificación y Licencias:</strong> Solo la gestión de la licencia de obra mayor en el Ayuntamiento de León puede llevar varias semanas o meses.</li>
+                                <li><strong>Tiempos de Ejecución Reales:</strong> Hay que respetar los tiempos de secado de morteros, yesos y pinturas.</li>
+                                <li><strong>Pedidos de Materiales:</strong> Ciertos materiales (ventanas a medida, muebles de cocina específicos, porcelánicos de importación) pueden tener plazos de entrega de 6 a 8 semanas.</li>
+                            </ul>
+                            <p class="font-bold">Nuestra ventaja: Al ser un proyecto "llave en mano", optimizamos el *planning*. Solapamos los pedidos de material con la fase de demolición y albañilería. Nuestro Jefe de Obra asegura que no haya "tiempos muertos" y que los gremios no se pisen. La fecha de fin se establece por contrato.</p>
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 3 -->
+                    <details>
+                        <summary class="text-xl">¿Qué pasa si surgen imprevistos ("bugs") en la obra?</summary>
+                        <div>
+                            <p class="mb-4">En edificios antiguos, los imprevistos (o "vicios ocultos") no son una excepción, son la norma. Un forjado en mal estado, una tubería comunitaria (bajante) que no estaba en planos y está rota, o una viga que aparece donde no debería.</p>
+                            <p class="mb-4">Así es como gestionamos los "bugs" del proyecto:</p>
+                            <ol class="mb-4 list-decimal space-y-2 pl-6">
+                                <li><strong>Documentar:</strong> Paramos inmediatamente esa partida y documentamos el problema (fotos, vídeos, informe técnico).</li>
+                                <li><strong>Comunicar:</strong> Le llamamos. Le explicamos el problema de forma clara y las implicaciones que tiene (coste y plazo).</li>
+                                <li><strong>Proponer Soluciones:</strong> Le presentamos las soluciones técnicas viables. Nunca le diremos "hay un problema", sino "hay un problema, y esta es la forma A, B y C de solucionarlo".</li>
+                                <li><strong>Presupuesto Adicional:</strong> Le entregamos un presupuesto cerrado para esa partida extra.</li>
+                                <li><strong>Aprobación:</strong> NO continuamos hasta que usted no ha revisado y aprobado por escrito esa modificación.</li>
+                            </ul>
+                            <p class="font-bold">La transparencia es total. Nunca encontrará un "extra" en la factura final que no haya sido discutido y aprobado por usted previamente.</p>
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 4 -->
+                    <details>
+                        <summary class="text-xl">¿Gestionáis los permisos de obra con el Ayuntamiento de León?</summary>
+                        <div>
+                            <p class="mb-4">**Absolutamente SÍ.** Es una parte fundamental de nuestro servicio "llave en mano".</p>
+                            <p>Nos encargamos de toda la burocracia para que usted no pise una ventanilla. Esto incluye:</p>
+                            <ul class="list-disc space-y-2 pl-6">
+                                <li>Determinar el tipo de licencia necesaria (Comunicación Previa, Obra Menor, Obra Mayor).</li>
+                                <li>Preparar la documentación técnica (memoria, planos) si es necesaria, a través de nuestros arquitectos y aparejadores colaboradores.</li>
+                                <li>Pagar las tasas municipales (previamente presupuestadas).</li>
+                                <li>Gestionar la licencia de ocupación de vía pública para el contenedor de escombros.</li>
+                                <li>Comunicar el inicio de obra a la comunidad de propietarios.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== CONTACTO Y NAP ======== -->
+        <section id="contacto" class="bg-brand-light py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="grid grid-cols-1 gap-16 md:grid-cols-2">
+                    
+                    <!-- Columna de Información -->
+                    <div>
+                        <h2 class="text-4xl font-extrabold text-brand-dark">Hablemos de su Proyecto</h2>
+                        <p class="mt-6 text-lg text-slate-600">
+                            ¿Tiene una idea? ¿Un piso para reformar? ¿El sueño de un nuevo restaurante?
+                            <br><br>
+                            El primer paso es el más fácil. Contáctenos para una **visita y consultoría sin compromiso**. Iremos a su propiedad, escucharemos sus necesidades y le daremos nuestra opinión técnica experta.
+                        </p>
+                        
+                        <!-- NAP (Name, Address, Phone) -->
+                        <div class="mt-12 space-y-8">
+                            <div class="flex items-start space-x-4">
+                                <ion-icon name="call-outline" class="mt-1 text-3xl text-brand-orange"></ion-icon>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand-dark">Teléfono (Atención Directa)</h3>
+                                    <a href="tel:694292025" class="text-2xl font-bold text-brand-orange hover:underline">694 29 20 25</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <ion-icon name="location-outline" class="mt-1 text-3xl text-brand-orange"></ion-icon>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand-dark">Nuestra Oficina (Visita con Cita)</h3>
+                                    <p class="text-lg text-slate-700">Reformas León</p>
+                                    <p class="text-lg text-slate-700">C. García I, 4</p>
+                                    <p class="text-lg text-slate-700">24003 León</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <ion-icon name="link-outline" class="mt-1 text-3xl text-brand-orange"></ion-icon>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand-dark">Web / Portfolio</h3>
+                                    <a href="https://reformasleon.org/" class="text-lg text-brand-orange hover:underline">https://reformasleon.org/</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna del Mapa (Simulado) -->
+                    <div class="rounded-xl bg-white p-8 shadow-card">
+                        <h3 class="mb-6 text-2xl font-bold text-brand-dark">Estamos en el Corazón de León</h3>
+                        <div class="overflow-hidden rounded-lg border-2 border-slate-200">
+                            <!-- Simulación de Mapa - En un proyecto real, aquí iría un Google Maps Embed -->
+                            <a href="https://www.google.com/maps/place/C.+Garc%C3%ADa+I,+4,+24003+Le%C3%B3n" target="_blank" rel="noopener noreferrer">
+                                <img src="https://placehold.co/600x400/e0e0e0/555555?text=Ver+en+Google+Maps" alt="Mapa de ubicación de Reformas León en C. García I, 4" class="h-auto w-full object-cover">
+                                <span class="block bg-slate-100 p-4 text-center font-medium text-brand-dark hover:bg-slate-200">
+                                    Abrir en Google Maps
+                                </span>
+                            </a>
+                        </div>
+                        <p class="mt-6 text-sm text-slate-500">
+                            Nuestra oficina se encuentra en C. García I, 4, 24003 León. Atendemos con cita previa para dedicarle el tiempo que su proyecto merece.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="bg-brand-dark text-brand-light/70">
+        <div class="container mx-auto max-w-7xl px-4 py-12 text-center">
+            <p class="mb-2 text-lg font-bold text-white">Reformas León | Reformas Integrales y Cocinas Profesionales</p>
+            <p class="mb-4 text-sm">C. García I, 4, 24003 León • 694 29 20 25 • <a href="https://reformasleon.org/" class="underline hover:text-white">https://reformasleon.org/</a></p>
+            <p class="text-xs">&copy; 2024 Reformas León. Todos los derechos reservados. Su proyecto de reforma en León, ejecutado con la máxima profesionalidad.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
